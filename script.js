@@ -1,4 +1,3 @@
-// TYPING ANIMATION
 const roles = [
 "Video Editor",
 "Web Developer",
@@ -39,13 +38,3 @@ function type() {
 }
 
 type();
-
-// PROJECT LINK
-function openProject(link) {
-    window.open(link, "_blank");
-}
-
-// GOOGLE DRIVE
-function openDrive() {
-    window.open("https://drive.google.com", "_blank");
-}
