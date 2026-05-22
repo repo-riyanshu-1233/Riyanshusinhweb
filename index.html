@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riyanshu Sinh | Premium Portfolio</title>
+    
+    <!-- Premium Icons & Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+    
+    <!-- External CSS Link -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- KINETIC TRACKER ELEMENTS -->
+    <div id="custom-cursor"></div>
+    <div id="custom-cursor-blur"></div>
+
+    <!-- 🎬 HERO SECTION -->
+    <section id="hero">
+        <div class="hero-greeting">Hello, my name is Riyanshu. Welcome!</div>
+        <h1 class="hero-main">Riyanshu Sinh</h1>
+        <div class="dynamic-wrapper">
+            <span>I am a</span>
+            <div class="role-box">
+                <span class="role-text visible">Video Editor</span>
+                <span class="role-text">Web Developer</span>
+                <span class="role-text">Game Developer</span>
+                <span class="role-text">Photographer</span>
+                <span class="role-text">Videographer</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 👤 ABOUT ME SECTION -->
+    <section id="about" class="section-padding reveal">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="section-title">About Me</h2>
+                <p class="about-text">
+                    I am a multi-disciplinary creator specialized in crafting immersive digital experiences. 
+                    From precise cinematic video edits to scalable modern websites and interactive game development, 
+                    I bring visions to life with a strict attention to detail and premium design philosophy.
+                </p>
+                <div class="social-links">
+                    <a href="https://instagram.com" target="_blank" rel="noopener" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://facebook.com" target="_blank" rel="noopener" class="social-icon" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://github.com" target="_blank" rel="noopener" class="social-icon" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 💼 MY WORK SECTION -->
+    <section id="work" class="section-padding reveal">
+        <div class="container">
+            <h2 class="section-title">My Work</h2>
+
+            <!-- Expanded Category: Web Development -->
+            <h3 class="category-title">Web Development Projects</h3>
+            <div class="project-grid">
+                <!-- Card 1 -->
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80" alt="E-commerce Architecture" class="project-preview">
+                    <div class="project-info">
+                        <h4 class="project-title">Premium E-Commerce Platform</h4>
+                        <p class="project-desc">A fully responsive, highly optimized web application architectural setup built on modern frameworks.</p>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="SaaS Dashboard" class="project-preview">
+                    <div class="project-info">
+                        <h4 class="project-title">Interactive Data Dashboard</h4>
+                        <p class="project-desc">A dark-themed real-time metrics tracking platform rendering complex structures smoothly.</p>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="SaaS Platform" class="project-preview">
+                    <div class="project-info">
+                        <h4 class="project-title">AI Analytics SaaS Landing Page</h4>
+                        <p class="project-desc">A high-conversion marketing page featuring high-performance asset loading, glassy modern gradients, and refined fluid micro-interactions.</p>
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1547082299-de196ea013d6?auto=format&fit=crop&w=800&q=80" alt="Cloud Infrastructure Management" class="project-preview">
+                    <div class="project-info">
+                        <h4 class="project-title">Cloud Infrastructure Web App</h4>
+                        <p class="project-desc">An advanced console system layout engineered to monitor node services, data clusters, and distributed user network pipelines securely.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🔗 EXTRA BUTTON SECTION -->
+    <div class="extra-section container reveal">
+        <a href="https://drive.google.com" target="_blank" rel="noopener" class="btn">
+            View Individual Work <i class="fas fa-external-link-alt"></i>
+        </a>
+    </div>
+
+    <!-- 📩 FOOTER SECTION -->
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-links">
+                <a href="#" onclick="openSubpage(event, 'about-page')">About Me</a>
+                <a href="#" onclick="openSubpage(event, 'contact-page')">Contact Us</a>
+                <a href="#" onclick="openSubpage(event, 'help-page')">Help</a>
+            </div>
+            <div class="copyright">
+                &copy; Copyright Reserved by Riyanshu Sinh
+            </div>
+        </div>
+    </footer>
+
+    <!-- 🔘 FUNCTIONAL PAGES (MODALS SYSTEM) -->
+    
+    <!-- About Me Page Overlay -->
+    <div id="about-page" class="subpage-modal">
+        <button class="close-modal" onclick="closeSubpage('about-page')"><i class="fas fa-times"></i></button>
+        <div class="modal-content">
+            <h2 class="section-title">About Me</h2>
+            <p class="about-text" style="text-align: left;">
+                Welcome to my extended profile space. I'm Riyanshu Sinh, a multi-faceted digital craftsman. 
+                Over the years, I've blended artistic visual expressions through photography and high-end video dynamic editing with logical problem solving in web and game structures. 
+                <br><br>
+                This space serves as an evolving archive of my professional milestones. Feel free to explore my works or initiate collaboration requests via the contact gateway.
+            </p>
+        </div>
+    </div>
+
+    <!-- Contact Us Page Overlay -->
+    <div id="contact-page" class="subpage-modal">
+        <button class="close-modal" onclick="closeSubpage('contact-page')"><i class="fas fa-times"></i></button>
+        <div class="modal-content">
+            <h2 class="section-title">Contact Us</h2>
+            <p class="about-text">Let's collaborate. Reach out directly across my primary communications channels.</p>
+            <div style="margin-bottom: 3.5rem;">
+                <a href="https://instagram.com" target="_blank" rel="noopener" class="social-icon" style="margin: 0 auto 1.5rem auto;"><i class="fab fa-instagram"></i></a>
+                <span style="color: var(--accent-muted)">Follow on Instagram</span>
+            </div>
+            <p style="font-size: 1rem; color: var(--accent-muted); margin-bottom: 1rem;">Direct Email Address:</p>
+            <a href="mailto:riyanshusinh@gmail.com" class="btn btn-secondary">
+                riyanshusinh@gmail.com <i class="far fa-envelope"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Help Page Overlay -->
+    <div id="help-page" class="subpage-modal">
+        <button class="close-modal" onclick="closeSubpage('help-page')"><i class="fas fa-times"></i></button>
+        <div class="modal-content">
+            <h2 class="section-title">Help & Support</h2>
+            <div style="background-color: var(--surface-color); padding: 3.5rem 2rem; border-radius: 24px; border: 1px solid var(--border-color)">
+                <i class="fas fa-info-circle" style="font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--primary-brand)"></i>
+                <p style="font-size: 1.25rem; font-weight: 300; line-height: 1.6;">
+                    Any problem, please let us know by mailing us at <br>
+                    <a href="mailto:editionindustries@gmail.com" style="color: var(--accent-color); font-weight: 600; text-decoration: underline;">editionindustries@gmail.com</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- External JavaScript Link -->
+    <script src="script.js"></script>
+</body>
+</html>
