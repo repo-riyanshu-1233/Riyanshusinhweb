@@ -59,21 +59,36 @@ document.addEventListener("DOMContentLoaded", () => {
         const currentLayer = textLayers[activeTextIndex];
         
         currentLayer.style.opacity = '0';
-        currentLayer.style.transform = 'translateY(-20px)';
+        
+        // Mobile fallback tracking check
+        if(window.innerWidth <= 968) {
+            currentLayer.style.transform = 'translate3d(-50%, -20px, 0)';
+        } else {
+            currentLayer.style.transform = 'translateY(-20px)';
+        }
         
         setTimeout(() => {
             currentLayer.classList.remove('visible');
             activeTextIndex = (activeTextIndex + 1) % textLayers.length;
             const nextLayer = textLayers[activeTextIndex];
             
-            nextLayer.style.transform = 'translateY(20px)';
+            if(window.innerWidth <= 968) {
+                nextLayer.style.transform = 'translate3d(-50%, 20px, 0)';
+            } else {
+                nextLayer.style.transform = 'translateY(20px)';
+            }
+            
             nextLayer.style.opacity = '0';
             nextLayer.classList.add('visible');
             
-            void nextLayer.offsetWidth; // Repaint
+            void nextLayer.offsetWidth; // Repaint execution
             
             nextLayer.style.opacity = '1';
-            nextLayer.style.transform = 'translateY(0)';
+            if(window.innerWidth <= 968) {
+                nextLayer.style.transform = 'translate3d(-50%, 0, 0)';
+            } else {
+                nextLayer.style.transform = 'translateY(0)';
+            }
         }, 500); 
     }
     
