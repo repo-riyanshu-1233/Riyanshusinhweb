@@ -1,3 +1,4 @@
+/* --- PREMIUM DESIGN SYSTEM & VARIABLES --- */
 :root {
     --bg-color: #030303;
     --surface-color: #0d0d11;
@@ -6,7 +7,7 @@
     --accent-glow: rgba(255, 255, 255, 0.12);
     --accent-muted: #94a3b8;
     --border-color: rgba(255, 255, 255, 0.08);
-    --primary-brand: #6366f1; /* Premium Indigo Accent */
+    --primary-brand: #6366f1;
     --transition-smooth: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -31,7 +32,7 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* --- KINETIC CURSOR TRACKER PANEL --- */
+/* --- KINETIC CURSOR TRACKER --- */
 #custom-cursor {
     width: 6px;
     height: 6px;
@@ -56,7 +57,6 @@ body {
     transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), width 0.3s, height 0.3s, border-color 0.3s;
 }
 
-/* --- STRUCTURE & REUSABLE COMPONENTS --- */
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -77,7 +77,6 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
-/* --- PREMIUM REFLECTIVE BUTTONS --- */
 .btn {
     position: relative;
     display: inline-flex;
@@ -103,9 +102,7 @@ body {
     transition: 0.5s;
 }
 
-.btn:hover::before {
-    left: 100%;
-}
+.btn:hover::before { left: 100%; }
 
 .btn:hover {
     background: transparent;
@@ -125,7 +122,6 @@ body {
     border-color: var(--accent-muted);
 }
 
-/* --- INTERSECTION OBSERVER ANIMATION SYSTEM --- */
 .reveal {
     opacity: 0;
     transform: translateY(40px) scale(0.98);
@@ -137,7 +133,7 @@ body {
     transform: translateY(0) scale(1);
 }
 
-/* --- HERO & SPLIT-TEXT LAYOUT ENGINE --- */
+/* --- HERO ENGINE --- */
 #hero {
     height: 100vh;
     display: flex;
@@ -150,11 +146,12 @@ body {
 }
 
 .hero-greeting {
-    font-size: 1.4rem;
+    font-size: 1.25rem;
     color: var(--accent-muted);
-    font-weight: 300;
-    letter-spacing: 0.02em;
-    margin-bottom: 0.5rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
     animation: fadeInLoad 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
@@ -182,25 +179,27 @@ body {
     position: relative;
     display: inline-block;
     text-align: left;
-    margin-left: 0.5rem;
+    margin-left: 0.6rem;
+    height: 100%;
+    width: 280px; /* Standard track block sizing */
 }
 
 .role-text {
     position: absolute;
     left: 0;
-    top: -22px;
+    top: 0;
     opacity: 0;
     white-space: nowrap;
     font-weight: 800;
     color: var(--primary-brand);
     text-shadow: 0 0 40px rgba(99, 102, 241, 0.25);
-    transform: matrix(1, 0, 0, 1, 0, 20);
-    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(20px);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .role-text.visible {
     opacity: 1;
-    transform: matrix(1, 0, 0, 1, 0, 0);
+    transform: translateY(0);
 }
 
 @keyframes fadeInLoad {
@@ -208,7 +207,7 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* --- 👤 ABOUT ME SECTION --- */
+/* --- ABOUT SECTION --- */
 #about {
     background-color: var(--surface-color);
     border-top: 1px solid var(--border-color);
@@ -257,7 +256,7 @@ body {
     box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
 }
 
-/* --- 💼 BENTO GRID WORK SECTIONS --- */
+/* --- BENTO WORK GRID --- */
 .category-title {
     font-size: 1.6rem;
     margin: 5rem 0 2rem 0;
@@ -293,7 +292,7 @@ body {
     transition: var(--transition-smooth);
 }
 
-/* Alternating Premium Bento Grid Configurations */
+/* Bento structural distribution */
 .project-grid .project-card:nth-child(3n+1) { grid-column: span 7; }
 .project-grid .project-card:nth-child(3n+2) { grid-column: span 5; }
 
@@ -312,13 +311,8 @@ body {
     border-bottom: 1px solid var(--border-color);
 }
 
-.project-card:hover .project-preview {
-    filter: grayscale(0%);
-}
-
-.project-info {
-    padding: 2.2rem;
-}
+.project-card:hover .project-preview { filter: grayscale(0%); }
+.project-info { padding: 2.2rem; }
 
 .project-title {
     font-size: 1.35rem;
@@ -333,13 +327,12 @@ body {
     font-weight: 300;
 }
 
-/* --- 🔗 EXTRA BUTTON GATEWAY --- */
 .extra-section {
     text-align: center;
     padding: 2rem 0 10rem 0;
 }
 
-/* --- 📩 MINIMALIST FOOTER --- */
+/* --- FOOTER --- */
 footer {
     background-color: var(--surface-color);
     border-top: 1px solid var(--border-color);
@@ -379,7 +372,7 @@ footer {
     letter-spacing: 0.03em;
 }
 
-/* --- 🔘 SYSTEM SUB-PAGES (MODALS ENGINE) --- */
+/* --- SYSTEM INTERFACES (MODALS) --- */
 .subpage-modal {
     position: fixed;
     top: 0; left: 0;
@@ -425,6 +418,7 @@ footer {
     margin: 0 auto;
     text-align: center;
 }
+
 @media (max-width: 968px) {
     .project-card, 
     .project-grid .project-card:nth-child(3n+1), 
@@ -433,6 +427,7 @@ footer {
     }
     .hero-main { font-size: 3.8rem; }
     .dynamic-wrapper { font-size: 1.6rem; }
+    .role-box { width: auto; max-width: 100%; }
     .section-title { font-size: 2.3rem; }
     .footer-links { flex-direction: column; gap: 1.8rem; }
     #custom-cursor, #custom-cursor-blur { display: none !important; }
