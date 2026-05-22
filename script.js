@@ -51,39 +51,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
     revealElements.forEach(el => scrollObserver.observe(el));
 
-    /* 3. INFINITE MULTI-ROLE LOOP ANIMATION ENGINE (FIXED) */
+    /* 3. INFINITE MULTI-ROLE LOOP ANIMATION ENGINE */
     const textLayers = document.querySelectorAll('.role-text');
     let activeTextIndex = 0;
 
     function cycleRoles() {
         const currentLayer = textLayers[activeTextIndex];
         
-        // Outgoing slide up out of layout bounds
         currentLayer.style.opacity = '0';
         currentLayer.style.transform = 'translateY(-20px)';
         
         setTimeout(() => {
             currentLayer.classList.remove('visible');
-            
-            // Clean index tracker handling reset checks infinitely
             activeTextIndex = (activeTextIndex + 1) % textLayers.length;
-            
             const nextLayer = textLayers[activeTextIndex];
             
-            // Context placement alignment before displaying frame
             nextLayer.style.transform = 'translateY(20px)';
             nextLayer.style.opacity = '0';
             nextLayer.classList.add('visible');
             
-            // Force browser layout repaint tick 
-            void nextLayer.offsetWidth;
+            void nextLayer.offsetWidth; // Repaint
             
             nextLayer.style.opacity = '1';
             nextLayer.style.transform = 'translateY(0)';
         }, 500); 
     }
     
-    // Set absolute looping interval mechanism
     setInterval(cycleRoles, 3000);
 });
 
