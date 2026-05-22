@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     
-    /* 1. INTERACTIVE MOUSE TRACKER */
+    /* 1. KINETIC MOUSE FLUID INTERACTION */
     const cursorDot = document.getElementById("custom-cursor");
     const cursorBlur = document.getElementById("custom-cursor-blur");
 
@@ -16,7 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }, { duration: 250, fill: "forwards" });
         });
 
-        // Micro-link expanding effects
         document.querySelectorAll("a, button, .project-card").forEach(item => {
             item.addEventListener("mouseenter", () => {
                 cursorBlur.style.width = "55px";
@@ -33,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    /* 2. PERSISTENT INTERSECTION OBSERVER ON SCROLL */
+    /* 2. ON-SCROLL REVEAL (INTERSECTION OBSERVER) */
     const revealElements = document.querySelectorAll(".reveal");
     const observerSettings = {
         root: null,
@@ -52,29 +51,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
     revealElements.forEach(el => scrollObserver.observe(el));
 
-    /* 3. MULTI-ROLE TEXT CYCLE ANIMATION */
+    /* 3. INFINITE MULTI-ROLE LOOP ANIMATION ENGINE (FIXED) */
     const textLayers = document.querySelectorAll('.role-text');
     let activeTextIndex = 0;
 
     function cycleRoles() {
         const currentLayer = textLayers[activeTextIndex];
+        
+        // Outgoing slide down out of layout bounds
         currentLayer.style.opacity = '0';
-        currentLayer.style.transform = 'matrix(1, 0, 0, 1, 0, -15)';
+        currentLayer.style.transform = 'translateY(-20px)';
         
         setTimeout(() => {
             currentLayer.classList.remove('visible');
-            currentLayer.style.transform = ''; 
             
+            // Clean index tracker handling reset checks infinitely
             activeTextIndex = (activeTextIndex + 1) % textLayers.length;
             
             const nextLayer = textLayers[activeTextIndex];
+            // Ensure safe setup placement context prior to trigger instantiation
+            nextLayer.style.transform = 'translateY(20px)';
+            nextLayer.style.opacity = '0';
             nextLayer.classList.add('visible');
-        }, 600);
+            
+            // Force browser layout update processing tick frame
+            void nextLayer.offsetWidth;
+            
+            nextLayer.style.opacity = '1';
+            nextLayer.style.transform = 'translateY(0)';
+        }, 500); // Transitions alignment match window
     }
+    
+    // Set looping speed interval mechanism
     setInterval(cycleRoles, 3000);
 });
 
-/* 4. MODALS MANAGEMENT ENGINE */
+/* 4. OVERLAYS WINDOW INTERACTIVE DRIVERS */
 function openSubpage(event, id) {
     if(event) event.preventDefault();
     const targetModal = document.getElementById(id);
@@ -87,11 +99,6 @@ function openSubpage(event, id) {
     }
 }
 
-function closeModal(id) {
-    closeSubpage(id);
-}
-
-// Fixed signature initialization logic matching clean markup hooks
 function closeSubpage(id) {
     const targetModal = document.getElementById(id);
     if(targetModal) {
