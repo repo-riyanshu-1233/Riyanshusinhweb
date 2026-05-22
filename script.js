@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function cycleRoles() {
         const currentLayer = textLayers[activeTextIndex];
         
-        // Outgoing slide down out of layout bounds
+        // Outgoing slide up out of layout bounds
         currentLayer.style.opacity = '0';
         currentLayer.style.transform = 'translateY(-20px)';
         
@@ -69,20 +69,21 @@ document.addEventListener("DOMContentLoaded", () => {
             activeTextIndex = (activeTextIndex + 1) % textLayers.length;
             
             const nextLayer = textLayers[activeTextIndex];
-            // Ensure safe setup placement context prior to trigger instantiation
+            
+            // Context placement alignment before displaying frame
             nextLayer.style.transform = 'translateY(20px)';
             nextLayer.style.opacity = '0';
             nextLayer.classList.add('visible');
             
-            // Force browser layout update processing tick frame
+            // Force browser layout repaint tick 
             void nextLayer.offsetWidth;
             
             nextLayer.style.opacity = '1';
             nextLayer.style.transform = 'translateY(0)';
-        }, 500); // Transitions alignment match window
+        }, 500); 
     }
     
-    // Set looping speed interval mechanism
+    // Set absolute looping interval mechanism
     setInterval(cycleRoles, 3000);
 });
 
