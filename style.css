@@ -10,19 +10,10 @@ body{
     color:white;
 }
 
-/* NAVBAR */
+/* NAV */
 nav{
-    display:flex;
-    justify-content:space-between;
-    padding:20px 40px;
-    background:rgba(0,0,0,0.5);
-    backdrop-filter:blur(10px);
-}
-
-nav a{
-    color:white;
-    margin-left:20px;
-    text-decoration:none;
+    padding:20px;
+    text-align:center;
 }
 
 /* HERO */
@@ -32,25 +23,16 @@ nav a{
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    text-align:center;
-}
-
-.hero h1{
-    font-size:40px;
-}
-
-.hero p{
-    margin-top:10px;
 }
 
 #typing{
-    margin-top:10px;
     color:#38bdf8;
+    margin-top:10px;
 }
 
 /* SECTION */
 section{
-    padding:60px 40px;
+    padding:60px;
     text-align:center;
 }
 
@@ -59,11 +41,6 @@ section{
     font-size:24px;
     margin:10px;
     color:white;
-    transition:0.3s;
-}
-
-.socials a:hover{
-    color:#38bdf8;
 }
 
 /* PROJECT GRID */
@@ -78,19 +55,13 @@ section{
     background:rgba(255,255,255,0.05);
     padding:20px;
     border-radius:15px;
-    transition:0.3s;
 }
 
-.card:hover{
-    transform:translateY(-10px);
-}
-
-/* BUTTON */
 .card button{
     margin-top:10px;
-    padding:10px 15px;
-    border:none;
+    padding:10px;
     background:#38bdf8;
+    border:none;
     border-radius:10px;
     cursor:pointer;
 }
@@ -98,7 +69,7 @@ section{
 .drive-btn{
     margin-top:30px;
     padding:12px 20px;
-    background:linear-gradient(45deg,#38bdf8,#9333ea);
+    background:#9333ea;
     border:none;
     border-radius:10px;
     cursor:pointer;
@@ -106,6 +77,13 @@ section{
 
 /* FOOTER */
 footer{
-    padding:20px;
     background:#020617;
+    padding:20px;
+    text-align:center;
+}
+
+.footer-links a{
+    margin:0 10px;
+    color:white;
+    text-decoration:none;
 }
