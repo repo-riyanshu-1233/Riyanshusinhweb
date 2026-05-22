@@ -64,7 +64,7 @@ body {
 }
 
 .section-padding {
-    padding: 7rem 0; /* Gap optimized globally */
+    padding: 7rem 0;
 }
 
 .section-title {
@@ -123,7 +123,6 @@ body {
     border-color: var(--accent-muted);
 }
 
-/* Bento Card Internal Dynamic Link Button */
 .card-btn {
     display: inline-flex;
     align-items: center;
@@ -168,7 +167,7 @@ body {
 
 /* --- HERO ENGINE --- */
 #hero {
-    padding: 12rem 0 7rem 0; /* Huge empty gaps fixed from 100vh to systematic layout padding */
+    padding: 12rem 0 7rem 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -460,16 +459,42 @@ footer {
     text-align: center;
 }
 
+/* --- RESPONSIVE ENGINE (MOBILE & TABLET DEVIATIONS) --- */
 @media (max-width: 968px) {
     .project-card, 
     .project-grid .project-card:nth-child(3n+1), 
     .project-grid .project-card:nth-child(3n+2) {
         grid-column: span 12;
     }
-    #hero { padding: 8rem 0 4rem 0; }
-    .hero-main { font-size: 3.8rem; }
-    .dynamic-wrapper { font-size: 1.6rem; }
-    .role-box { width: auto; max-width: 100%; }
+    #hero { 
+        padding: 8rem 0 4rem 0; 
+    }
+    .hero-main { 
+        font-size: 3.4rem; 
+    }
+    
+    /* Center Animation Alignment Lock on Mobile Devices */
+    .dynamic-wrapper { 
+        font-size: 1.5rem;
+        flex-direction: column;
+        height: auto;
+        gap: 0.5rem;
+    }
+    .role-box { 
+        margin-left: 0;
+        width: 100%;
+        height: 40px;
+        text-align: center;
+    }
+    .role-text {
+        left: 50%;
+        transform: translate3d(-50%, 20px, 0);
+        width: 100%;
+    }
+    .role-text.visible {
+        transform: translate3d(-50%, 0, 0);
+    }
+    
     .section-title { font-size: 2.3rem; }
     .footer-links { flex-direction: column; gap: 1.8rem; }
     #custom-cursor, #custom-cursor-blur { display: none !important; }
