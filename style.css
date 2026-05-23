@@ -367,7 +367,6 @@ body {
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
 }
 
-/* Responsive Image Resize Engine */
 .project-preview {
     width: 100%;
     max-height: 220px;
@@ -401,7 +400,7 @@ body {
     flex-grow: 1;
 }
 
-/* --- EXTENDABLE ACCORDION ENGINE (NEW ENGINE) --- */
+/* --- EXTENDABLE ACCORDION ENGINE --- */
 .accordion-content {
     width: 100%;
     max-height: 0;
@@ -411,7 +410,7 @@ body {
 }
 
 .accordion-content.expanded {
-    max-height: 2000px; /* High boundary limits for seamless scrolling */
+    max-height: 2000px; 
     opacity: 1;
     margin-top: 3rem;
 }
@@ -423,21 +422,60 @@ body {
     width: 100%;
 }
 
-.achievement-card {
+/* Helper layout for single content expansion symmetry */
+.achievement-grid.single-layout {
+    grid-template-columns: 1fr;
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+/* PREMIUM CONTAINER WITH IMAGE SPLIT INTERFACE */
+.achievement-card.visual-card {
+    display: grid;
+    grid-template-columns: 4fr 5fr;
+    gap: 0;
+    padding: 0;
+    overflow: hidden;
     background: var(--card-bg);
     border: 1px solid var(--border-color);
-    border-radius: 20px;
-    padding: 2.5rem 2rem;
-    text-align: left;
+    border-radius: 24px;
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     transition: var(--transition-smooth);
 }
 
-.achievement-card:hover {
+.achievement-card.visual-card:hover {
     border-color: rgba(99, 102, 241, 0.4);
     transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+}
+
+.cert-preview-box {
+    width: 100%;
+    height: 100%;
+    min-height: 260px;
+    background: #000;
+    overflow: hidden;
+    border-right: 1px solid var(--border-color);
+}
+
+.cert-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-smooth);
+}
+
+.achievement-card.visual-card:hover .cert-img {
+    transform: scale(1.04);
+}
+
+.cert-details {
+    padding: 3rem 2.5rem;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .ach-icon-box {
@@ -455,14 +493,14 @@ body {
 }
 
 .ach-title {
-    font-size: 1.25rem;
+    font-size: 1.4rem;
     font-weight: 600;
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.8rem;
 }
 
 .ach-desc {
     color: var(--accent-muted);
-    font-size: 0.95rem;
+    font-size: 1rem;
     font-weight: 300;
     line-height: 1.6;
 }
@@ -559,7 +597,7 @@ footer {
     text-align: center;
 }
 
-/* --- RESPONSIVE ENGINE (MOBILE & TABLET DEVIATIONS) --- */
+/* --- RESPONSIVE ENGINE --- */
 @media (max-width: 968px) {
     .container {
         padding: 0 1.2rem;
@@ -574,7 +612,6 @@ footer {
         border-radius: 16px;
     }
     
-    /* Mobile Scale Optimization for Project Images */
     .project-preview {
         max-height: 180px; 
     }
@@ -582,14 +619,18 @@ footer {
         padding: 1.5rem;
     }
     
-    /* Achievement Grid Mobile Shift */
-    .achievement-grid {
-        grid-template-columns: repeat(12, 1fr);
-        gap: 1.5rem;
+    /* Split breakdown for Visual Layout on Mobile Phones */
+    .achievement-card.visual-card {
+        grid-template-columns: 1fr;
+        border-radius: 16px;
     }
-    .achievement-card {
-        grid-column: span 12;
-        padding: 1.8rem 1.5rem;
+    .cert-preview-box {
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        min-height: 200px;
+    }
+    .cert-details {
+        padding: 2rem 1.5rem;
     }
     
     #hero { 
@@ -599,7 +640,6 @@ footer {
         font-size: 3.4rem; 
     }
     
-    /* Center Animation Alignment Lock on Mobile Devices */
     .dynamic-wrapper { 
         font-size: 1.5rem;
         flex-direction: column;
