@@ -16,7 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }, { duration: 250, fill: "forwards" });
         });
 
-        document.querySelectorAll("a, button, .project-card").forEach(item => {
+        // Added trigger check for accordion buttons as well
+        document.querySelectorAll("a, button, .project-card, #accordion-trigger").forEach(item => {
             item.addEventListener("mouseenter", () => {
                 cursorBlur.style.width = "55px";
                 cursorBlur.style.height = "55px";
@@ -93,9 +94,28 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     
     setInterval(cycleRoles, 3000);
+
+    /* 4. DYNAMIC EXTENDABLE ACCORDION DRIVER (NEW ENGINE) */
+    const accordionBtn = document.getElementById("accordion-trigger");
+    const accordionPanel = document.getElementById("accordion-panel");
+    const chevronIcon = document.querySelector(".toggle-chevron");
+
+    if (accordionBtn && accordionPanel) {
+        accordionBtn.addEventListener("click", () => {
+            accordionPanel.classList.toggle("expanded");
+            chevronIcon.classList.toggle("rotated");
+            
+            // Recalculate heights dynamically for active states
+            if (accordionPanel.classList.contains("expanded")) {
+                accordionPanel.style.maxHeight = accordionPanel.scrollHeight + 100 + "px";
+            } else {
+                accordionPanel.style.maxHeight = "0px";
+            }
+        });
+    }
 });
 
-/* 4. OVERLAYS WINDOW INTERACTIVE DRIVERS */
+/* 5. OVERLAYS WINDOW INTERACTIVE DRIVERS */
 function openSubpage(event, id) {
     if(event) event.preventDefault();
     const targetModal = document.getElementById(id);
