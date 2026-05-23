@@ -18,7 +18,7 @@
 }
 
 @media (min-width: 969px) {
-    html, body, a, button, .project-card {
+    html, body, a, button, .project-card, #accordion-trigger {
         cursor: none !important;
     }
 }
@@ -61,6 +61,13 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
+}
+
+.text-center-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .section-padding {
@@ -121,6 +128,31 @@ body {
 .btn-secondary:hover {
     background: rgba(255, 255, 255, 0.05);
     border-color: var(--accent-muted);
+}
+
+/* Accordion Specific Button Style */
+.btn-accordion {
+    width: 100%;
+    max-width: 600px;
+    justify-content: space-between;
+    background: var(--surface-color);
+    color: var(--accent-color);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn-accordion:hover {
+    background: var(--surface-color);
+    border-color: var(--primary-brand);
+    box-shadow: 0 0 25px rgba(99, 102, 241, 0.15);
+}
+
+.toggle-chevron {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.toggle-chevron.rotated {
+    transform: rotate(180deg);
 }
 
 .card-btn {
@@ -369,6 +401,72 @@ body {
     flex-grow: 1;
 }
 
+/* --- EXTENDABLE ACCORDION ENGINE (NEW ENGINE) --- */
+.accordion-content {
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+    opacity: 0;
+}
+
+.accordion-content.expanded {
+    max-height: 2000px; /* High boundary limits for seamless scrolling */
+    opacity: 1;
+    margin-top: 3rem;
+}
+
+.achievement-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    width: 100%;
+}
+
+.achievement-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    text-align: left;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    transition: var(--transition-smooth);
+}
+
+.achievement-card:hover {
+    border-color: rgba(99, 102, 241, 0.4);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.ach-icon-box {
+    width: 50px;
+    height: 50px;
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-brand);
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+}
+
+.ach-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+}
+
+.ach-desc {
+    color: var(--accent-muted);
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
 .extra-section {
     text-align: center;
     padding: 2rem 0 10rem 0;
@@ -482,6 +580,16 @@ footer {
     }
     .project-info {
         padding: 1.5rem;
+    }
+    
+    /* Achievement Grid Mobile Shift */
+    .achievement-grid {
+        grid-template-columns: repeat(12, 1fr);
+        gap: 1.5rem;
+    }
+    .achievement-card {
+        grid-column: span 12;
+        padding: 1.8rem 1.5rem;
     }
     
     #hero { 
