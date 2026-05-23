@@ -16,7 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }, { duration: 250, fill: "forwards" });
         });
 
-        // Added trigger check for accordion buttons as well
         document.querySelectorAll("a, button, .project-card, #accordion-trigger").forEach(item => {
             item.addEventListener("mouseenter", () => {
                 cursorBlur.style.width = "55px";
@@ -58,10 +57,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function cycleRoles() {
         const currentLayer = textLayers[activeTextIndex];
-        
         currentLayer.style.opacity = '0';
         
-        // Mobile fallback tracking check
         if(window.innerWidth <= 968) {
             currentLayer.style.transform = 'translate3d(-50%, -20px, 0)';
         } else {
@@ -95,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     setInterval(cycleRoles, 3000);
 
-    /* 4. DYNAMIC EXTENDABLE ACCORDION DRIVER (NEW ENGINE) */
+    /* 4. DYNAMIC EXTENDABLE ACCORDION DRIVER */
     const accordionBtn = document.getElementById("accordion-trigger");
     const accordionPanel = document.getElementById("accordion-panel");
     const chevronIcon = document.querySelector(".toggle-chevron");
@@ -105,7 +102,6 @@ document.addEventListener("DOMContentLoaded", () => {
             accordionPanel.classList.toggle("expanded");
             chevronIcon.classList.toggle("rotated");
             
-            // Recalculate heights dynamically for active states
             if (accordionPanel.classList.contains("expanded")) {
                 accordionPanel.style.maxHeight = accordionPanel.scrollHeight + 100 + "px";
             } else {
