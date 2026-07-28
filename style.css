@@ -1,4 +1,4 @@
-/* --- PREMIUM DESIGN SYSTEM & VARIABLES --- */
+
 :root {
     --bg-color: #030303;
     --surface-color: #0d0d11;
@@ -32,7 +32,6 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* --- KINETIC CURSOR TRACKER --- */
 #custom-cursor {
     width: 6px;
     height: 6px;
@@ -84,7 +83,7 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
-/* --- BUTTONS SYSTEM --- */
+
 .btn {
     position: relative;
     display: inline-flex;
@@ -196,8 +195,6 @@ body {
     opacity: 1;
     transform: translateY(0) scale(1);
 }
-
-/* --- HERO ENGINE --- */
 #hero {
     padding: 12rem 0 7rem 0;
     display: flex;
@@ -270,8 +267,6 @@ body {
     from { opacity: 0; transform: translateY(15px); }
     to { opacity: 1; transform: translateY(0); }
 }
-
-/* --- ABOUT SECTION --- */
 #about {
     background-color: var(--surface-color);
     border-top: 1px solid var(--border-color);
@@ -320,7 +315,6 @@ body {
     box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
 }
 
-/* --- BENTO WORK GRID --- */
 .category-title {
     font-size: 1.6rem;
     margin: 5rem 0 2rem 0;
@@ -397,10 +391,8 @@ body {
     color: var(--accent-muted);
     font-size: 0.98rem;
     font-weight: 300;
-    flex-grow: 1;
+    flex-grow: 100;
 }
-
-/* --- EXTENDABLE ACCORDION ENGINE --- */
 .accordion-content {
     width: 100%;
     max-height: 0;
@@ -422,14 +414,13 @@ body {
     width: 100%;
 }
 
-/* Helper layout for single content expansion symmetry */
+
 .achievement-grid.single-layout {
     grid-template-columns: 1fr;
     max-width: 850px;
     margin: 0 auto;
 }
 
-/* PREMIUM CONTAINER WITH IMAGE SPLIT INTERFACE */
 .achievement-card.visual-card {
     display: grid;
     grid-template-columns: 4fr 5fr;
@@ -510,7 +501,7 @@ body {
     padding: 2rem 0 10rem 0;
 }
 
-/* --- FOOTER --- */
+
 footer {
     background-color: var(--surface-color);
     border-top: 1px solid var(--border-color);
@@ -550,7 +541,7 @@ footer {
     letter-spacing: 0.03em;
 }
 
-/* --- SYSTEM INTERFACES (MODALS) --- */
+
 .subpage-modal {
     position: fixed;
     top: 0; left: 0;
@@ -594,10 +585,9 @@ footer {
 .modal-content {
     max-width: 650px;
     margin: 0 auto;
-    text-align: center;
+    text-align: center ;
 }
 
-/* --- RESPONSIVE ENGINE --- */
 @media (max-width: 968px) {
     .container {
         padding: 0 1.2rem;
@@ -619,7 +609,7 @@ footer {
         padding: 1.5rem;
     }
     
-    /* Split breakdown for Visual Layout on Mobile Phones */
+    
     .achievement-card.visual-card {
         grid-template-columns: 1fr;
         border-radius: 16px;
