@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
     
-    /* 1. KINETIC MOUSE FLUID INTERACTION */
     const cursorDot = document.getElementById("custom-cursor");
     const cursorBlur = document.getElementById("custom-cursor-blur");
 
@@ -16,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }, { duration: 250, fill: "forwards" });
         });
 
-        document.querySelectorAll("a, button, .project-card, #accordion-trigger").forEach(item => {
+        document.querySelectorAll("a, button, .project-card, #accordion-trigger, #work-accordion-trigger").forEach(item => {
             item.addEventListener("mouseenter", () => {
                 cursorBlur.style.width = "55px";
                 cursorBlur.style.height = "55px";
@@ -32,7 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    /* 2. ON-SCROLL REVEAL (INTERSECTION OBSERVER) */
     const revealElements = document.querySelectorAll(".reveal");
     const observerSettings = {
         root: null,
@@ -51,7 +49,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     revealElements.forEach(el => scrollObserver.observe(el));
 
-    /* 3. INFINITE MULTI-ROLE LOOP ANIMATION ENGINE */
     const textLayers = document.querySelectorAll('.role-text');
     let activeTextIndex = 0;
 
@@ -81,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
             nextLayer.style.opacity = '0';
             nextLayer.classList.add('visible');
             
-            void nextLayer.offsetWidth; // Force repaint execution
+            void nextLayer.offsetWidth;
             
             nextLayer.style.opacity = '1';
             if (window.innerWidth <= 968) {
@@ -96,7 +93,6 @@ document.addEventListener("DOMContentLoaded", () => {
         setInterval(cycleRoles, 3000);
     }
 
-    /* 4. DYNAMIC EXTENDABLE ACCORDION DRIVER */
     const accordionBtn = document.getElementById("accordion-trigger");
     const accordionPanel = document.getElementById("accordion-panel");
     const chevronIcon = document.querySelector(".toggle-chevron");
@@ -116,9 +112,28 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
+
+    const workAccordionBtn = document.getElementById("work-accordion-trigger");
+    const workAccordionPanel = document.getElementById("work-accordion-panel");
+    const workChevronIcon = document.querySelector(".work-chevron");
+
+    if (workAccordionBtn && workAccordionPanel) {
+        workAccordionBtn.addEventListener("click", () => {
+            workAccordionPanel.classList.toggle("expanded");
+            
+            if (workChevronIcon) {
+                workChevronIcon.classList.toggle("rotated");
+            }
+            
+            if (workAccordionPanel.classList.contains("expanded")) {
+                workAccordionPanel.style.maxHeight = workAccordionPanel.scrollHeight + 100 + "px";
+            } else {
+                workAccordionPanel.style.maxHeight = "0px";
+            }
+        });
+    }
 });
 
-/* 5. OVERLAYS WINDOW INTERACTIVE DRIVERS */
 function openSubpage(event, id) {
     if (event) event.preventDefault();
     const targetModal = document.getElementById(id);
