@@ -93,40 +93,42 @@ document.addEventListener("DOMContentLoaded", () => {
         setInterval(cycleRoles, 3000);
     }
 
+    /* Achievements Accordion Fix */
     const accordionBtn = document.getElementById("accordion-trigger");
     const accordionPanel = document.getElementById("accordion-panel");
-    const chevronIcon = document.querySelector(".toggle-chevron");
+    const chevronIcon = document.querySelector(".toggle-chevron:not(.work-chevron)");
 
     if (accordionBtn && accordionPanel) {
         accordionBtn.addEventListener("click", () => {
-            accordionPanel.classList.toggle("expanded");
+            const isExpanded = accordionPanel.classList.toggle("expanded");
             
             if (chevronIcon) {
-                chevronIcon.classList.toggle("rotated");
+                chevronIcon.classList.toggle("rotated", isExpanded);
             }
             
-            if (accordionPanel.classList.contains("expanded")) {
-                accordionPanel.style.maxHeight = accordionPanel.scrollHeight + 100 + "px";
+            if (isExpanded) {
+                accordionPanel.style.maxHeight = accordionPanel.scrollHeight + 150 + "px";
             } else {
                 accordionPanel.style.maxHeight = "0px";
             }
         });
     }
 
+    /* Work Projects Accordion Fix */
     const workAccordionBtn = document.getElementById("work-accordion-trigger");
     const workAccordionPanel = document.getElementById("work-accordion-panel");
     const workChevronIcon = document.querySelector(".work-chevron");
 
     if (workAccordionBtn && workAccordionPanel) {
         workAccordionBtn.addEventListener("click", () => {
-            workAccordionPanel.classList.toggle("expanded");
+            const isExpanded = workAccordionPanel.classList.toggle("expanded");
             
             if (workChevronIcon) {
-                workChevronIcon.classList.toggle("rotated");
+                workChevronIcon.classList.toggle("rotated", isExpanded);
             }
             
-            if (workAccordionPanel.classList.contains("expanded")) {
-                workAccordionPanel.style.maxHeight = workAccordionPanel.scrollHeight + 100 + "px";
+            if (isExpanded) {
+                workAccordionPanel.style.maxHeight = workAccordionPanel.scrollHeight + 300 + "px";
             } else {
                 workAccordionPanel.style.maxHeight = "0px";
             }
