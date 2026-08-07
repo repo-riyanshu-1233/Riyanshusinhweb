@@ -56,10 +56,12 @@ document.addEventListener("DOMContentLoaded", () => {
     let activeTextIndex = 0;
 
     function cycleRoles() {
+        if (textLayers.length === 0) return;
+
         const currentLayer = textLayers[activeTextIndex];
         currentLayer.style.opacity = '0';
         
-        if(window.innerWidth <= 968) {
+        if (window.innerWidth <= 968) {
             currentLayer.style.transform = 'translate3d(-50%, -20px, 0)';
         } else {
             currentLayer.style.transform = 'translateY(-20px)';
@@ -70,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
             activeTextIndex = (activeTextIndex + 1) % textLayers.length;
             const nextLayer = textLayers[activeTextIndex];
             
-            if(window.innerWidth <= 968) {
+            if (window.innerWidth <= 968) {
                 nextLayer.style.transform = 'translate3d(-50%, 20px, 0)';
             } else {
                 nextLayer.style.transform = 'translateY(20px)';
@@ -79,10 +81,10 @@ document.addEventListener("DOMContentLoaded", () => {
             nextLayer.style.opacity = '0';
             nextLayer.classList.add('visible');
             
-            void nextLayer.offsetWidth; // Repaint execution
+            void nextLayer.offsetWidth; // Force repaint execution
             
             nextLayer.style.opacity = '1';
-            if(window.innerWidth <= 968) {
+            if (window.innerWidth <= 968) {
                 nextLayer.style.transform = 'translate3d(-50%, 0, 0)';
             } else {
                 nextLayer.style.transform = 'translateY(0)';
@@ -90,7 +92,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 500); 
     }
     
-    setInterval(cycleRoles, 3000);
+    if (textLayers.length > 0) {
+        setInterval(cycleRoles, 3000);
+    }
 
     /* 4. DYNAMIC EXTENDABLE ACCORDION DRIVER */
     const accordionBtn = document.getElementById("accordion-trigger");
@@ -100,7 +104,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (accordionBtn && accordionPanel) {
         accordionBtn.addEventListener("click", () => {
             accordionPanel.classList.toggle("expanded");
-            chevronIcon.classList.toggle("rotated");
+            
+            if (chevronIcon) {
+                chevronIcon.classList.toggle("rotated");
+            }
             
             if (accordionPanel.classList.contains("expanded")) {
                 accordionPanel.style.maxHeight = accordionPanel.scrollHeight + 100 + "px";
@@ -113,9 +120,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* 5. OVERLAYS WINDOW INTERACTIVE DRIVERS */
 function openSubpage(event, id) {
-    if(event) event.preventDefault();
+    if (event) event.preventDefault();
     const targetModal = document.getElementById(id);
-    if(targetModal) {
+    if (targetModal) {
         targetModal.style.display = 'block';
         setTimeout(() => {
             targetModal.classList.add('active');
@@ -126,7 +133,7 @@ function openSubpage(event, id) {
 
 function closeSubpage(id) {
     const targetModal = document.getElementById(id);
-    if(targetModal) {
+    if (targetModal) {
         targetModal.classList.remove('active');
         setTimeout(() => {
             targetModal.style.display = 'none';
