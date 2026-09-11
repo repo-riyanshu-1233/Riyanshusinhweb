@@ -9,13 +9,12 @@ document.addEventListener("DOMContentLoaded", () => {
             const posY = e.clientY;
 
             cursorDot.style.transform = `translate3d(${posX - 3}px, ${posY - 3}px, 0)`;
-            
             cursorBlur.animate({
                 transform: `translate3d(${posX - 19}px, ${posY - 19}px, 0)`
             }, { duration: 250, fill: "forwards" });
         });
 
-        document.querySelectorAll("a, button, .project-card, #accordion-trigger, #work-accordion-trigger").forEach(item => {
+        document.querySelectorAll("a, button, .click-card, .cert-card, #accordion-trigger, #work-accordion-trigger").forEach(item => {
             item.addEventListener("mouseenter", () => {
                 cursorBlur.style.width = "55px";
                 cursorBlur.style.height = "55px";
@@ -32,16 +31,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const revealElements = document.querySelectorAll(".reveal");
-    const observerSettings = {
-        root: null,
-        threshold: 0.1,
-        rootMargin: "0px 0px -40px 0px"
-    };
+    const observerSettings = { root: null, threshold: 0.1, rootMargin: "0px 0px -40px 0px" };
 
     const scrollObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add("active");
+                
+                if(entry.target.id === 'languages') {
+                    const progressFills = document.querySelectorAll('.progress-fill');
+                    progressFills.forEach(bar => {
+                        const percent = bar.getAttribute('data-percent');
+                        bar.style.width = percent + "%";
+                    });
+                }
                 observer.unobserve(entry.target);
             }
         });
@@ -89,58 +92,78 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 500); 
     }
     
-    if (textLayers.length > 0) {
-        setInterval(cycleRoles, 3000);
+    if (textLayers.length > 0) { setInterval(cycleRoles, 3000); }
+
+    const setupAccordion = (btnId, panelId, iconClass) => {
+        const btn = document.getElementById(btnId);
+        const panel = document.getElementById(panelId);
+        const icon = document.querySelector(iconClass);
+
+        if (btn && panel) {
+            btn.addEventListener("click", () => {
+                const isExpanded = panel.classList.toggle("expanded");
+                if (icon) icon.classList.toggle("rotated", isExpanded);
+                panel.style.maxHeight = isExpanded ? panel.scrollHeight + 300 + "px" : "0px";
+            });
+        }
+    };
+    setupAccordion("accordion-trigger", "accordion-panel", ".toggle-chevron:not(.work-chevron)");
+    setupAccordion("work-accordion-trigger", "work-accordion-panel", ".work-chevron");
+
+    let currentProjectIndex = 0;
+    const projectCards = document.querySelectorAll('.click-card');
+    
+    projectCards.forEach((card, index) => {
+        card.setAttribute('data-index', index);
+        card.addEventListener('click', () => {
+            currentProjectIndex = index;
+            populateProjectModal();
+            openSubpage(null, 'project-modal');
+        });
+    });
+
+    function populateProjectModal() {
+        const card = projectCards[currentProjectIndex];
+        document.getElementById('modal-project-title').textContent = card.getAttribute('data-title');
+        document.getElementById('modal-project-desc').textContent = card.getAttribute('data-desc');
+        document.getElementById('modal-project-link').href = card.getAttribute('data-link');
     }
 
-    /* Achievements Accordion Fix */
-    const accordionBtn = document.getElementById("accordion-trigger");
-    const accordionPanel = document.getElementById("accordion-panel");
-    const chevronIcon = document.querySelector(".toggle-chevron:not(.work-chevron)");
-
-    if (accordionBtn && accordionPanel) {
-        accordionBtn.addEventListener("click", () => {
-            const isExpanded = accordionPanel.classList.toggle("expanded");
+    const nextProjectBtn = document.getElementById('next-project-btn');
+    if(nextProjectBtn) {
+        nextProjectBtn.addEventListener('click', () => {
+            const modalInner = document.getElementById('project-modal-inner');
+            modalInner.style.transition = "opacity 0.3s ease";
+            modalInner.style.opacity = "0";
             
-            if (chevronIcon) {
-                chevronIcon.classList.toggle("rotated", isExpanded);
-            }
-            
-            if (isExpanded) {
-                accordionPanel.style.maxHeight = accordionPanel.scrollHeight + 150 + "px";
-            } else {
-                accordionPanel.style.maxHeight = "0px";
-            }
+            setTimeout(() => {
+                currentProjectIndex = (currentProjectIndex + 1) % projectCards.length;
+                populateProjectModal();
+                modalInner.style.opacity = "1";
+            }, 300);
         });
     }
 
-    /* Work Projects Accordion Fix */
-    const workAccordionBtn = document.getElementById("work-accordion-trigger");
-    const workAccordionPanel = document.getElementById("work-accordion-panel");
-    const workChevronIcon = document.querySelector(".work-chevron");
-
-    if (workAccordionBtn && workAccordionPanel) {
-        workAccordionBtn.addEventListener("click", () => {
-            const isExpanded = workAccordionPanel.classList.toggle("expanded");
-            
-            if (workChevronIcon) {
-                workChevronIcon.classList.toggle("rotated", isExpanded);
-            }
-            
-            if (isExpanded) {
-                workAccordionPanel.style.maxHeight = workAccordionPanel.scrollHeight + 300 + "px";
-            } else {
-                workAccordionPanel.style.maxHeight = "0px";
-            }
+    const certCards = document.querySelectorAll('.cert-card');
+    certCards.forEach(card => {
+        card.addEventListener('click', () => {
+            document.getElementById('modal-cert-title').textContent = card.getAttribute('data-title');
+            document.getElementById('modal-cert-img').src = card.getAttribute('data-img');
+            document.getElementById('modal-cert-desc').textContent = card.getAttribute('data-desc');
+            openSubpage(null, 'cert-modal');
         });
-    }
+    });
+
 });
 
 function openSubpage(event, id) {
     if (event) event.preventDefault();
     const targetModal = document.getElementById(id);
     if (targetModal) {
-        targetModal.style.display = 'block';
+        targetModal.style.display = 'flex';
+        const innerContent = targetModal.querySelector('.modal-content');
+        if(innerContent) innerContent.style.opacity = "1";
+        
         setTimeout(() => {
             targetModal.classList.add('active');
             document.body.style.overflow = 'hidden';
