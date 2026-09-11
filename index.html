@@ -9,10 +9,6 @@
     <meta name="keywords" content="Riyanshu, Riyanshu Sinh, riyanshu1233, riyanshusinh, Riyanshu Sinh portfolio, Web Developer, riyanshu Chauhan, riyanshuchauhan, Edition Industries">
     <meta name="author" content="Riyanshu Sinh">
 
-    <meta property="og:title" content="Riyanshu Sinh (riyanshu1233) | Portfolio">
-    <meta property="og:description" content="Explore the official portfolio of Riyanshu Sinh — Web Developer, Game Developer, and Digital Creator.">
-    <meta property="og:type" content="website">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,9 +25,7 @@
         <video class="hero-bg-video" autoplay loop muted playsinline>
             <source src="assets/video.mp4" type="video/mp4">
         </video>
-      
         <div class="hero-overlay"></div>
-
         <div class="hero-content">
             <div class="hero-greeting">Hello there my name is riyanshu sinh</div>
             <h1 class="hero-main">welcome !</h1>
@@ -51,7 +45,7 @@
     <section id="about" class="section-padding reveal">
         <div class="container">
             <div class="about-content">
-                <h2 class="section-title">About Me</h2>
+                <h2 class="section-title">Who Am I ?</h2>
                 <p class="about-text">
                     I am a multi-disciplinary creator specialized in crafting immersive digital experiences. 
                     From scalable modern websites and interactive game development to precise high-end photography, 
@@ -67,9 +61,72 @@
         </div>
     </section>
 
-    <section id="work" class="section-padding reveal">
+    <section id="languages" class="section-padding reveal">
         <div class="container text-center-wrapper">
-            <h2 class="section-title" style="margin-bottom: 2.5rem;">My Work</h2>
+            <h2 class="section-title" style="margin-bottom: 2.5rem;">Languages I Learn</h2>
+            <div class="lang-grid">
+                
+                <div class="lang-item">
+                    <div class="lang-icon"><i class="fab fa-html5"></i></div>
+                    <div class="lang-info">
+                        <div class="lang-name">HTML</div>
+                        <div class="progress-track"><div class="progress-fill" data-percent="70"></div></div>
+                    </div>
+                    <div class="lang-percent">70%</div>
+                </div>
+
+                <div class="lang-item">
+                    <div class="lang-icon"><i class="fab fa-css3-alt"></i></div>
+                    <div class="lang-info">
+                        <div class="lang-name">CSS</div>
+                        <div class="progress-track"><div class="progress-fill" data-percent="65"></div></div>
+                    </div>
+                    <div class="lang-percent">65%</div>
+                </div>
+
+                <div class="lang-item">
+                    <div class="lang-icon"><i class="fab fa-js"></i></div>
+                    <div class="lang-info">
+                        <div class="lang-name">JavaScript</div>
+                        <div class="progress-track"><div class="progress-fill" data-percent="50"></div></div>
+                    </div>
+                    <div class="lang-percent">50%</div>
+                </div>
+
+                <div class="lang-item">
+                    <div class="lang-icon"><i class="fas fa-database"></i></div>
+                    <div class="lang-info">
+                        <div class="lang-name">SQL</div>
+                        <div class="progress-track"><div class="progress-fill" data-percent="60"></div></div>
+                    </div>
+                    <div class="lang-percent">60%</div>
+                </div>
+
+                <div class="lang-item">
+                    <div class="lang-icon" style="font-weight: 800; font-size: 1.5rem;">C</div>
+                    <div class="lang-info">
+                        <div class="lang-name">C Language</div>
+                        <div class="progress-track"><div class="progress-fill" data-percent="80"></div></div>
+                    </div>
+                    <div class="lang-percent">80%</div>
+                </div>
+
+                <div class="lang-item">
+                    <div class="lang-icon" style="font-weight: 800; font-size: 1.5rem;">C++</div>
+                    <div class="lang-info">
+                        <div class="lang-name">C++</div>
+                        <div class="progress-track"><div class="progress-fill" data-percent="40"></div></div>
+                    </div>
+                    <div class="lang-percent">40%</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="work" class="section-padding reveal" style="padding-top: 0;">
+        <div class="container text-center-wrapper">
+            <h2 class="section-title" style="margin-bottom: 2.5rem;">My Projects</h2>
 
             <button id="work-accordion-trigger" class="btn btn-accordion">
                 <span>View Projects & Showcase</span>
@@ -77,32 +134,29 @@
             </button>
 
             <div id="work-accordion-panel" class="accordion-content">
-                <div class="project-grid">
+                <div class="project-grid custom-small-grid">
                    
-                    <div class="project-card">
+                    <div class="project-card click-card" data-title="IPTV WEB PLAYER" data-desc="A fully responsive, highly optimize live tv channel player." data-link="https://editioniptv.onrender.com/">
                         <img src="images/iptvnew.png" alt="iptv" class="project-preview">
-                        <div class="project-info">
-                            <h4 class="project-title"> IPTV WEB PLAYER</h4>
-                            <p class="project-desc">A fully responsive, highly optimize live tv channel player.</p>
-                            <a href="https://editioniptv.onrender.com/" target="_blank" rel="noopener" class="card-btn">Go To Project <i class="fas fa-arrow-right"></i></a>
+                        <div class="project-info-mini">
+                            <h4 class="project-title-mini">IPTV WEB PLAYER</h4>
+                            <p class="click-hint">Click to view</p>
                         </div>
                     </div>
                   
-                    <div class="project-card">
+                    <div class="project-card click-card" data-title="ARCADE EDITION" data-desc="ALL OF MY GAME AT ONE PLACE CHECK THEM ALL" data-link="https://arcade-edition.onrender.com/">
                         <img src="images/arcade.png" alt="Work" class="project-preview">
-                        <div class="project-info">
-                            <h4 class="project-title">ARCADE EDITION </h4>
-                            <p class="project-desc">ALL OF MY GAME AT ONE PLACE CHECK THEM ALL</p>
-                            <a href="https://arcade-edition.onrender.com/" target="_blank" rel="noopener" class="card-btn">Go To Project <i class="fas fa-arrow-right"></i></a>
+                        <div class="project-info-mini">
+                            <h4 class="project-title-mini">ARCADE EDITION</h4>
+                            <p class="click-hint">Click to view</p>
                         </div>
                     </div>
 
-                    <div class="project-card">
+                    <div class="project-card click-card" data-title="SECURESPHERE" data-desc="An interactive web applications that allows you to chat privately with end to end encryption and share your code, thoughts, dreams. (under build) v1.0" data-link="https://securesphere-cqm7.onrender.com">
                         <img src="images/ss.png" alt="New Project" class="project-preview">
-                        <div class="project-info">
-                            <h4 class="project-title">SECURESPHERE</h4>
-                            <p class="project-desc">An interactive web applications that allows you to chat privately with end to end encryption and share your code, thoughts, dreams. (under build) v1.0</p>
-                            <a href="https://securesphere-cqm7.onrender.com" target="_blank" rel="noopener" class="card-btn">Go To Project <i class="fas fa-arrow-right"></i></a>
+                        <div class="project-info-mini">
+                            <h4 class="project-title-mini">SECURESPHERE</h4>
+                            <p class="click-hint">Click to view</p>
                         </div>
                     </div>
 
@@ -115,34 +169,36 @@
         <div class="container text-center-wrapper">
            
             <button id="accordion-trigger" class="btn btn-accordion">
-                <span>View Achievements & Certifications</span>
+                <span>My Certificates</span>
                 <i class="fas fa-chevron-down toggle-chevron"></i>
             </button>
 
             <div id="accordion-panel" class="accordion-content">
-                <div class="achievement-grid single-layout">
-                    <div class="achievement-card visual-card">
-                        <div class="cert-preview-box">
-                            <img src="images/IBM.jpg" alt="IBM.jpg" class="cert-img">
+                <div class="achievement-grid custom-small-grid">
+                    
+                    <div class="achievement-card visual-card cert-card" data-title="INTRODUCTION TO RETRIEVAL AUGMENTED GENERATION" data-img="images/IBM.jpg" data-desc="Certified For completion of introduction to retrieval augmented generation in ALM COURSE_3825461 At silver oak university">
+                        <div class="cert-preview-box-mini">
+                            <img src="images/IBM.jpg" alt="IBM RAG" class="cert-img">
                         </div>
-                        <div class="cert-details">
-                            <div class="null">
-                                <i class="fas fa-certificate"></i>
-                            </div>
-                            <h4 class="ach-title">INTRODUCTION TO RETRIEVAL AUGMENTED GENERATION </h4>
-                            <p class="ach-desc">Certified For completion of introduction to retrieval augmented generation in ALM COURSE_3825461 At silver oak university </p>
+                        <div class="cert-details-mini">
+                            <h4 class="ach-title-mini">IBM RAG CERTIFICATION</h4>
+                            <p class="click-hint">Click to view full</p>
                         </div>
                     </div>
+                    
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="extra-section container reveal">
-        <a href="https://editionindustries.onrender.com" target="_blank" rel="noopener" class="btn">
-            my other website <i class="fas fa-external-link-alt"></i>
-        </a>
-    </div>
+    <section class="section-padding reveal" style="padding-top: 2rem; padding-bottom: 5rem;">
+        <div class="container text-center-wrapper" style="flex-direction: row; gap: 1.5rem; justify-content: center;">
+            <button class="btn" onclick="openSubpage(event, 'hire-modal')">Hire for a project!</button>
+            <button class="btn btn-secondary video-btn-icon" onclick="openSubpage(event, 'video-modal')" title="Check Industries Website">
+                <i class="fas fa-video"></i>
+            </button>
+        </div>
+    </section>
 
     <footer>
         <div class="container footer-container">
@@ -152,10 +208,61 @@
                 <a href="#" onclick="openSubpage(event, 'help-page')">Help</a>
             </div>
             <div class="copyright">
-                &copy; Copyright Reserved by Riyanshu Sinh 2026
+                &copy; Copyright Reserved by Riyanshu Sinh 2026-27
             </div>
         </div>
     </footer>
+
+    <div id="project-modal" class="subpage-modal popup-center">
+        <button class="close-modal" onclick="closeSubpage('project-modal')"><i class="fas fa-times"></i></button>
+        <div class="modal-content glass-box" id="project-modal-inner">
+            <h2 id="modal-project-title" class="section-title" style="font-size: 2.2rem;">Title</h2>
+            <p id="modal-project-desc" class="about-text" style="text-align: left; margin-bottom: 2.5rem;">Description</p>
+            <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+                <a id="modal-project-link" href="#" target="_blank" rel="noopener" class="btn">Go To Project <i class="fas fa-arrow-right"></i></a>
+                <button id="next-project-btn" class="btn btn-secondary">Next <i class="fas fa-step-forward"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <div id="cert-modal" class="subpage-modal popup-center">
+        <button class="close-modal" onclick="closeSubpage('cert-modal')"><i class="fas fa-times"></i></button>
+        <div class="modal-content glass-box">
+            <h2 id="modal-cert-title" class="section-title" style="font-size: 1.8rem; margin-bottom: 2rem;">Title</h2>
+            <img id="modal-cert-img" src="" alt="Certificate" style="width: 100%; max-height: 50vh; object-fit: contain; border-radius: 12px; margin-bottom: 2rem; border: 1px solid var(--border-color);">
+            <p id="modal-cert-desc" class="about-text" style="font-size: 1.1rem; margin-bottom: 0;">Description</p>
+        </div>
+    </div>
+
+    <div id="hire-modal" class="subpage-modal popup-center">
+        <button class="close-modal" onclick="closeSubpage('hire-modal')"><i class="fas fa-times"></i></button>
+        <div class="modal-content glass-box">
+            <h2 class="section-title">Let's Work Together</h2>
+            <p class="about-text">Contact me directly via the details below to discuss your project.</p>
+            
+            <div style="margin-bottom: 2.5rem;">
+                <a href="https://www.instagram.com/riyanshu_1233?igsh=MWx0ZjFoanljMzVwNg==" target="_blank" rel="noopener" class="social-icon" style="margin: 0 auto 1rem auto; width: 65px; height: 65px; font-size: 1.8rem;"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.instagram.com/riyanshu_1233?igsh=MWx0ZjFoanljMzVwNg==" target="_blank" style="color: var(--accent-color); text-decoration: none; font-size: 1.2rem;">@riyanshu_1233</a>
+            </div>
+            
+            <div>
+                <a href="mailto:riyanshusinh@gmail.com" class="btn btn-secondary" style="width: 100%; justify-content: center;">
+                    riyanshusinh@gmail.com <i class="far fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="video-modal" class="subpage-modal popup-center">
+        <div class="modal-content glass-box" style="padding: 3rem;">
+            <i class="fas fa-globe" style="font-size: 3rem; color: var(--primary-brand); margin-bottom: 1.5rem;"></i>
+            <h3 style="font-size: 1.8rem; font-weight: 600; margin-bottom: 2.5rem;">Check my industries website</h3>
+            <div style="display: flex; gap: 1rem; justify-content: center;">
+                <a href="https://editionindustries.onrender.com" target="_blank" rel="noopener" class="btn">Go <i class="fas fa-external-link-alt"></i></a>
+                <button class="btn btn-secondary" onclick="closeSubpage('video-modal')">Exit</button>
+            </div>
+        </div>
+    </div>
 
     <div id="about-page" class="subpage-modal">
         <button class="close-modal" onclick="closeSubpage('about-page')"><i class="fas fa-times"></i></button>
@@ -169,7 +276,7 @@
             </p>
         </div>
     </div>
-
+    
     <div id="contact-page" class="subpage-modal">
         <button class="close-modal" onclick="closeSubpage('contact-page')"><i class="fas fa-times"></i></button>
         <div class="modal-content">
@@ -185,7 +292,7 @@
             </a>
         </div>
     </div>
-
+    
     <div id="help-page" class="subpage-modal">
         <button class="close-modal" onclick="closeSubpage('help-page')"><i class="fas fa-times"></i></button>
         <div class="modal-content">
@@ -199,6 +306,7 @@
             </div>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
