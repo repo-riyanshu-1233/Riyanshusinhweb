@@ -127,6 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById('modal-project-title').textContent = card.getAttribute('data-title');
         document.getElementById('modal-project-desc').textContent = card.getAttribute('data-desc');
         document.getElementById('modal-project-link').href = card.getAttribute('data-link');
+        document.getElementById('modal-project-img').src = card.getAttribute('data-img');
     }
 
     const nextProjectBtn = document.getElementById('next-project-btn');
