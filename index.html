@@ -136,7 +136,7 @@
             <div id="work-accordion-panel" class="accordion-content">
                 <div class="project-grid custom-small-grid">
                    
-                    <div class="project-card click-card" data-title="IPTV WEB PLAYER" data-desc="A fully responsive, highly optimize live tv channel player." data-link="https://editioniptv.onrender.com/">
+                    <div class="project-card click-card" data-title="IPTV WEB PLAYER" data-desc="A fully responsive, highly optimize live tv channel player." data-link="https://editioniptv.onrender.com/" data-img="images/iptvnew.png">
                         <img src="images/iptvnew.png" alt="iptv" class="project-preview">
                         <div class="project-info-mini">
                             <h4 class="project-title-mini">IPTV WEB PLAYER</h4>
@@ -144,7 +144,7 @@
                         </div>
                     </div>
                   
-                    <div class="project-card click-card" data-title="ARCADE EDITION" data-desc="ALL OF MY GAME AT ONE PLACE CHECK THEM ALL" data-link="https://arcade-edition.onrender.com/">
+                    <div class="project-card click-card" data-title="ARCADE EDITION" data-desc="ALL OF MY GAME AT ONE PLACE CHECK THEM ALL" data-link="https://arcade-edition.onrender.com/" data-img="images/arcade.png">
                         <img src="images/arcade.png" alt="Work" class="project-preview">
                         <div class="project-info-mini">
                             <h4 class="project-title-mini">ARCADE EDITION</h4>
@@ -152,7 +152,7 @@
                         </div>
                     </div>
 
-                    <div class="project-card click-card" data-title="SECURESPHERE" data-desc="An interactive web applications that allows you to chat privately with end to end encryption and share your code, thoughts, dreams. (under build) v1.0" data-link="https://securesphere-cqm7.onrender.com">
+                    <div class="project-card click-card" data-title="SECURESPHERE" data-desc="An interactive web applications that allows you to chat privately with end to end encryption and share your code, thoughts, dreams. (under build) v1.0" data-link="https://securesphere-cqm7.onrender.com" data-img="images/ss.png">
                         <img src="images/ss.png" alt="New Project" class="project-preview">
                         <div class="project-info-mini">
                             <h4 class="project-title-mini">SECURESPHERE</h4>
@@ -168,6 +168,8 @@
     <section id="achievements" class="section-padding reveal" style="padding-top: 0;">
         <div class="container text-center-wrapper">
            
+            <h2 class="section-title" style="margin-bottom: 2.5rem;">Certificates</h2>
+
             <button id="accordion-trigger" class="btn btn-accordion">
                 <span>My Certificates</span>
                 <i class="fas fa-chevron-down toggle-chevron"></i>
@@ -181,8 +183,8 @@
                             <img src="images/IBM.jpg" alt="IBM RAG" class="cert-img">
                         </div>
                         <div class="cert-details-mini">
-                            <h4 class="ach-title-mini">IBM RAG CERTIFICATION</h4>
-                            <p class="click-hint">Click to view full</p>
+                            <h4 class="ach-title-mini">IBM RAG</h4>
+                            <p class="click-hint">Click to view</p>
                         </div>
                     </div>
                     
@@ -215,29 +217,30 @@
 
     <div id="project-modal" class="subpage-modal popup-center">
         <button class="close-modal" onclick="closeSubpage('project-modal')"><i class="fas fa-times"></i></button>
-        <div class="modal-content glass-box" id="project-modal-inner">
-            <h2 id="modal-project-title" class="section-title" style="font-size: 2.2rem;">Title</h2>
-            <p id="modal-project-desc" class="about-text" style="text-align: left; margin-bottom: 2.5rem;">Description</p>
-            <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
-                <a id="modal-project-link" href="#" target="_blank" rel="noopener" class="btn">Go To Project <i class="fas fa-arrow-right"></i></a>
-                <button id="next-project-btn" class="btn btn-secondary">Next <i class="fas fa-step-forward"></i></button>
+        <div class="modal-content glass-box" id="project-modal-inner" style="max-width: 480px;">
+            <h2 id="modal-project-title" class="section-title" style="font-size: 1.6rem; margin-bottom: 1rem;">Title</h2>
+            <img id="modal-project-img" src="" alt="Project Image" style="width: 100%; max-height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 1.5rem; border: 1px solid var(--border-color);">
+            <p id="modal-project-desc" class="about-text" style="text-align: left; font-size: 0.95rem; margin-bottom: 2rem;">Description</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a id="modal-project-link" href="#" target="_blank" rel="noopener" class="btn" style="padding: 0.8rem 1.5rem; font-size: 0.9rem;">Go To Project <i class="fas fa-arrow-right"></i></a>
+                <button id="next-project-btn" class="btn btn-secondary" style="padding: 0.8rem 1.5rem; font-size: 0.9rem;">Next <i class="fas fa-step-forward"></i></button>
             </div>
         </div>
     </div>
 
     <div id="cert-modal" class="subpage-modal popup-center">
         <button class="close-modal" onclick="closeSubpage('cert-modal')"><i class="fas fa-times"></i></button>
-        <div class="modal-content glass-box">
-            <h2 id="modal-cert-title" class="section-title" style="font-size: 1.8rem; margin-bottom: 2rem;">Title</h2>
-            <img id="modal-cert-img" src="" alt="Certificate" style="width: 100%; max-height: 50vh; object-fit: contain; border-radius: 12px; margin-bottom: 2rem; border: 1px solid var(--border-color);">
-            <p id="modal-cert-desc" class="about-text" style="font-size: 1.1rem; margin-bottom: 0;">Description</p>
+        <div class="modal-content glass-box" style="max-width: 550px;">
+            <h2 id="modal-cert-title" class="section-title" style="font-size: 1.6rem; margin-bottom: 1.5rem;">Title</h2>
+            <img id="modal-cert-img" src="" alt="Certificate" style="width: 100%; max-height: 40vh; object-fit: contain; border-radius: 12px; margin-bottom: 1.5rem; border: 1px solid var(--border-color);">
+            <p id="modal-cert-desc" class="about-text" style="font-size: 1rem; margin-bottom: 0;">Description</p>
         </div>
     </div>
 
     <div id="hire-modal" class="subpage-modal popup-center">
         <button class="close-modal" onclick="closeSubpage('hire-modal')"><i class="fas fa-times"></i></button>
-        <div class="modal-content glass-box">
-            <h2 class="section-title">Let's Work Together</h2>
+        <div class="modal-content glass-box" style="max-width: 480px;">
+            <h2 class="section-title" style="font-size: 2rem;">Let's Work Together</h2>
             <p class="about-text">Contact me directly via the details below to discuss your project.</p>
             
             <div style="margin-bottom: 2.5rem;">
@@ -254,9 +257,9 @@
     </div>
 
     <div id="video-modal" class="subpage-modal popup-center">
-        <div class="modal-content glass-box" style="padding: 3rem;">
+        <div class="modal-content glass-box" style="padding: 2.5rem; max-width: 480px;">
             <i class="fas fa-globe" style="font-size: 3rem; color: var(--primary-brand); margin-bottom: 1.5rem;"></i>
-            <h3 style="font-size: 1.8rem; font-weight: 600; margin-bottom: 2.5rem;">Check my industries website</h3>
+            <h3 style="font-size: 1.6rem; font-weight: 600; margin-bottom: 2.5rem;">Check my industries website</h3>
             <div style="display: flex; gap: 1rem; justify-content: center;">
                 <a href="https://editionindustries.onrender.com" target="_blank" rel="noopener" class="btn">Go <i class="fas fa-external-link-alt"></i></a>
                 <button class="btn btn-secondary" onclick="closeSubpage('video-modal')">Exit</button>
