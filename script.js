@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    
     const cursorDot = document.getElementById("custom-cursor");
     const cursorBlur = document.getElementById("custom-cursor-blur");
 
@@ -7,19 +6,18 @@ document.addEventListener("DOMContentLoaded", () => {
         window.addEventListener("mousemove", (e) => {
             const posX = e.clientX;
             const posY = e.clientY;
-
             cursorDot.style.transform = `translate3d(${posX - 3}px, ${posY - 3}px, 0)`;
             cursorBlur.animate({
                 transform: `translate3d(${posX - 19}px, ${posY - 19}px, 0)`
-            }, { duration: 250, fill: "forwards" });
+            }, { duration: 150, fill: "forwards" });
         });
 
-        document.querySelectorAll("a, button, .click-card, .cert-card, #accordion-trigger, #work-accordion-trigger").forEach(item => {
+        document.querySelectorAll("a, button, .project-card, .tab-btn").forEach(item => {
             item.addEventListener("mouseenter", () => {
                 cursorBlur.style.width = "55px";
                 cursorBlur.style.height = "55px";
                 cursorBlur.style.borderColor = "var(--primary-brand)";
-                cursorBlur.style.backgroundColor = "rgba(99, 102, 241, 0.05)";
+                cursorBlur.style.backgroundColor = "rgba(139, 92, 246, 0.1)";
             });
             item.addEventListener("mouseleave", () => {
                 cursorBlur.style.width = "38px";
@@ -30,155 +28,156 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    const revealElements = document.querySelectorAll(".reveal");
-    const observerSettings = { root: null, threshold: 0.1, rootMargin: "0px 0px -40px 0px" };
-
-    const scrollObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("active");
-                
-                if(entry.target.id === 'languages') {
-                    const progressFills = document.querySelectorAll('.progress-fill');
-                    progressFills.forEach(bar => {
-                        const percent = bar.getAttribute('data-percent');
-                        bar.style.width = percent + "%";
-                    });
-                }
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerSettings);
-
-    revealElements.forEach(el => scrollObserver.observe(el));
-
-    const textLayers = document.querySelectorAll('.role-text');
+    const textLayers = document.querySelectorAll('.role-text-loop');
     let activeTextIndex = 0;
-
+    
     function cycleRoles() {
         if (textLayers.length === 0) return;
-
         const currentLayer = textLayers[activeTextIndex];
         currentLayer.style.opacity = '0';
-        
-        if (window.innerWidth <= 968) {
-            currentLayer.style.transform = 'translate3d(-50%, -20px, 0)';
-        } else {
-            currentLayer.style.transform = 'translateY(-20px)';
-        }
+        currentLayer.style.transform = window.innerWidth <= 968 ? 'translate(-50%, -20px)' : 'translateY(-20px)';
         
         setTimeout(() => {
             currentLayer.classList.remove('visible');
             activeTextIndex = (activeTextIndex + 1) % textLayers.length;
             const nextLayer = textLayers[activeTextIndex];
             
-            if (window.innerWidth <= 968) {
-                nextLayer.style.transform = 'translate3d(-50%, 20px, 0)';
-            } else {
-                nextLayer.style.transform = 'translateY(20px)';
-            }
-            
+            nextLayer.style.transform = window.innerWidth <= 968 ? 'translate(-50%, 20px)' : 'translateY(20px)';
             nextLayer.style.opacity = '0';
             nextLayer.classList.add('visible');
-            
-            void nextLayer.offsetWidth;
+            void nextLayer.offsetWidth; 
             
             nextLayer.style.opacity = '1';
-            if (window.innerWidth <= 968) {
-                nextLayer.style.transform = 'translate3d(-50%, 0, 0)';
-            } else {
-                nextLayer.style.transform = 'translateY(0)';
-            }
+            nextLayer.style.transform = window.innerWidth <= 968 ? 'translate(-50%, 0)' : 'translateY(0)';
         }, 500); 
     }
-    
-    if (textLayers.length > 0) { setInterval(cycleRoles, 3000); }
+    if (textLayers.length > 0) setInterval(cycleRoles, 2500); 
 
-    const setupAccordion = (btnId, panelId, iconClass) => {
-        const btn = document.getElementById(btnId);
-        const panel = document.getElementById(panelId);
-        const icon = document.querySelector(iconClass);
+    const observerOptions = { root: null, threshold: 0.15 };
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('appear');
+                if(entry.target.id === 'knowledge') {
+                    animateProgressBars();
+                }
+            }
+        });
+    }, observerOptions);
 
-        if (btn && panel) {
-            btn.addEventListener("click", () => {
-                const isExpanded = panel.classList.toggle("expanded");
-                if (icon) icon.classList.toggle("rotated", isExpanded);
-                panel.style.maxHeight = isExpanded ? panel.scrollHeight + 300 + "px" : "0px";
-            });
-        }
-    };
-    setupAccordion("accordion-trigger", "accordion-panel", ".toggle-chevron:not(.work-chevron)");
-    setupAccordion("work-accordion-trigger", "work-accordion-panel", ".work-chevron");
+    document.querySelectorAll('.fade-section').forEach(section => {
+        observer.observe(section);
+    });
 
-    let currentProjectIndex = 0;
-    const projectCards = document.querySelectorAll('.click-card');
-    
-    projectCards.forEach((card, index) => {
-        card.setAttribute('data-index', index);
-        card.addEventListener('click', () => {
-            currentProjectIndex = index;
-            populateProjectModal();
-            openSubpage(null, 'project-modal');
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".sidebar-nav a");
+    window.addEventListener("scroll", () => {
+        let current = "";
+        sections.forEach((section) => {
+            const sectionTop = section.offsetTop;
+            if (pageYOffset >= sectionTop - 150) current = section.getAttribute("id");
+        });
+        navLinks.forEach((link) => {
+            link.classList.remove("active");
+            if (link.getAttribute("href").includes(current)) link.classList.add("active");
         });
     });
 
-    function populateProjectModal() {
-        const card = projectCards[currentProjectIndex];
-        document.getElementById('modal-project-title').textContent = card.getAttribute('data-title');
-        document.getElementById('modal-project-desc').textContent = card.getAttribute('data-desc');
-        document.getElementById('modal-project-link').href = card.getAttribute('data-link');
-        document.getElementById('modal-project-img').src = card.getAttribute('data-img');
-    }
-
-    const nextProjectBtn = document.getElementById('next-project-btn');
-    if(nextProjectBtn) {
-        nextProjectBtn.addEventListener('click', () => {
-            const modalInner = document.getElementById('project-modal-inner');
-            modalInner.style.transition = "opacity 0.3s ease";
-            modalInner.style.opacity = "0";
-            
-            setTimeout(() => {
-                currentProjectIndex = (currentProjectIndex + 1) % projectCards.length;
-                populateProjectModal();
-                modalInner.style.opacity = "1";
-            }, 300);
-        });
-    }
-
-    const certCards = document.querySelectorAll('.cert-card');
-    certCards.forEach(card => {
-        card.addEventListener('click', () => {
-            document.getElementById('modal-cert-title').textContent = card.getAttribute('data-title');
-            document.getElementById('modal-cert-img').src = card.getAttribute('data-img');
-            document.getElementById('modal-cert-desc').textContent = card.getAttribute('data-desc');
-            openSubpage(null, 'cert-modal');
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
         });
     });
-
 });
 
-function openSubpage(event, id) {
-    if (event) event.preventDefault();
-    const targetModal = document.getElementById(id);
-    if (targetModal) {
-        targetModal.style.display = 'flex';
-        const innerContent = targetModal.querySelector('.modal-content');
-        if(innerContent) innerContent.style.opacity = "1";
-        
+function animateProgressBars() {
+    document.querySelectorAll('.progress-bar-fill').forEach(bar => {
+        const targetWidth = bar.getAttribute('data-width');
+        bar.style.width = targetWidth;
+    });
+}
+
+function switchTab(tab, btn) {
+    const langTab = document.getElementById('lang-tab');
+    const skillTab = document.getElementById('skill-tab');
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    if(tab === 'lang') {
+        skillTab.style.opacity = '0';
         setTimeout(() => {
-            targetModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }, 20);
+            skillTab.style.display = 'none';
+            langTab.style.display = 'grid';
+            langTab.style.opacity = '1';
+            animateProgressBars();
+        }, 200);
+    } else {
+        langTab.style.opacity = '0';
+        setTimeout(() => {
+            langTab.style.display = 'none';
+            skillTab.style.display = 'grid';
+            skillTab.style.opacity = '1';
+            animateProgressBars();
+        }, 200);
     }
 }
 
-function closeSubpage(id) {
-    const targetModal = document.getElementById(id);
-    if (targetModal) {
-        targetModal.classList.remove('active');
-        setTimeout(() => {
-            targetModal.style.display = 'none';
-            document.body.style.overflow = '';
-        }, 500);
+let activeItems = [];
+let currentIndex = 0;
+
+const projCards = document.querySelectorAll('.proj-card-item');
+const certCards = document.querySelectorAll('.cert-card-item');
+
+projCards.forEach((card, index) => {
+    card.addEventListener('click', () => {
+        activeItems = projCards;
+        currentIndex = index;
+        openModalFromActive();
+    });
+});
+
+certCards.forEach((card, index) => {
+    card.addEventListener('click', () => {
+        activeItems = certCards;
+        currentIndex = index;
+        openModalFromActive();
+    });
+});
+
+function openModalFromActive() {
+    updateModalContent();
+    document.getElementById('projectModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function updateModalContent() {
+    const card = activeItems[currentIndex];
+    document.getElementById('m-title').textContent = card.getAttribute('data-title');
+    document.getElementById('m-desc').textContent = card.getAttribute('data-desc');
+    document.getElementById('m-img').src = card.getAttribute('data-img');
+    
+    const linkBtn = document.getElementById('m-link');
+    const linkVal = card.getAttribute('data-link');
+    if(linkVal && linkVal !== '#') {
+        linkBtn.style.display = 'inline-flex';
+        linkBtn.href = linkVal;
+    } else {
+        linkBtn.style.display = 'none';
     }
+}
+
+function nextItem() {
+    currentIndex = (currentIndex + 1) % activeItems.length;
+    const modalBox = document.querySelector('.modal-box');
+    modalBox.style.opacity = '0';
+    setTimeout(() => {
+        updateModalContent();
+        modalBox.style.opacity = '1';
+    }, 300);
+}
+
+function closeModal() {
+    document.getElementById('projectModal').classList.remove('active');
+    document.body.style.overflow = 'auto';
 }
