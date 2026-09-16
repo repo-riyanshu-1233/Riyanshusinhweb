@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+Document.addEventListener("DOMContentLoaded", () => {
     const cursorDot = document.getElementById("custom-cursor");
     const cursorBlur = document.getElementById("custom-cursor-blur");
 
@@ -85,8 +85,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            const hrefAttr = this.getAttribute('href');
+            if (hrefAttr !== '#' && document.querySelector(hrefAttr)) {
+                e.preventDefault();
+                document.querySelector(hrefAttr).scrollIntoView({ behavior: 'smooth' });
+            }
         });
     });
 });
@@ -159,9 +162,12 @@ function updateModalContent() {
     
     const linkBtn = document.getElementById('m-link');
     const linkVal = card.getAttribute('data-link');
+    
+    // Fix: Proper link handling with setAttribute and fallback check
     if(linkVal && linkVal !== '#') {
         linkBtn.style.display = 'inline-flex';
-        linkBtn.href = linkVal;
+        linkBtn.setAttribute('href', linkVal);
+        linkBtn.setAttribute('target', '_blank');
     } else {
         linkBtn.style.display = 'none';
     }
