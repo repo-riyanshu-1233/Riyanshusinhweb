@@ -1,4 +1,4 @@
-Document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     const cursorDot = document.getElementById("custom-cursor");
     const cursorBlur = document.getElementById("custom-cursor-blur");
 
