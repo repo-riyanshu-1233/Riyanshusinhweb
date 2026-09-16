@@ -163,7 +163,7 @@ function updateModalContent() {
     const linkBtn = document.getElementById('m-link');
     const linkVal = card.getAttribute('data-link');
     
-    // Fix: Proper link handling with setAttribute and fallback check
+    
     if(linkVal && linkVal !== '#') {
         linkBtn.style.display = 'inline-flex';
         linkBtn.setAttribute('href', linkVal);
