@@ -165,8 +165,10 @@ button { outline: none; border: none; }
     flex-wrap: nowrap !important;
     gap: 2rem;
     overflow-x: auto;
+    overflow-y: hidden;
     scroll-snap-type: x mandatory;
     padding-bottom: 2rem;
+    width: 100%;
     scrollbar-width: thin;
     scrollbar-color: var(--primary-brand) transparent;
 }
@@ -181,17 +183,24 @@ button { outline: none; border: none; }
 }
 
 .project-card {
-    flex: 0 0 calc(33.333% - 1.33rem); 
+    flex: 0 0 320px !important; 
+    min-width: 320px !important;
     scroll-snap-align: start; 
     cursor: pointer;
-    background: var(--card-bg); border: 1px solid var(--border-color);
-    border-radius: 24px; overflow: hidden; backdrop-filter: blur(16px);
-    transition: var(--transition-smooth); display: flex; flex-direction: column;
+    background: var(--card-bg); 
+    border: 1px solid var(--border-color);
+    border-radius: 24px; 
+    overflow: hidden; 
+    backdrop-filter: blur(16px);
+    transition: var(--transition-smooth); 
+    display: flex; 
+    flex-direction: column;
 }
 
 @media (max-width: 968px) { 
     .project-card { 
-        flex: 0 0 85% !important; 
+        flex: 0 0 82% !important; 
+        min-width: 82% !important;
     } 
 }
 
