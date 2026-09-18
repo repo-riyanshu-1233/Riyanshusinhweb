@@ -94,6 +94,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+});
+
+document.addEventListener('keydown', function(e) {
+    if (e.ctrlKey && e.key === 'c') {
+        e.preventDefault();
+    }
+    if (e.ctrlKey && (e.key === 'u' || e.key === 's')) {
+        e.preventDefault();
+    }
+    if (e.key === 'F12') {
+        e.preventDefault();
+    }
+});
+
 function animateProgressBars() {
     document.querySelectorAll('.progress-bar-fill').forEach(bar => {
         const targetWidth = bar.getAttribute('data-width');
