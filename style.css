@@ -161,11 +161,24 @@ button { outline: none; border: none; }
 .about-text-box p { font-size: 1.15rem; color: var(--accent-muted); line-height: 1.8; font-weight: 300; }
 
 .slider-container {
-    display: flex; gap: 2rem; overflow-x: auto;
-    scroll-snap-type: x mandatory; padding-bottom: 2rem; scrollbar-width: none;
+    display: flex !important; 
+    flex-wrap: nowrap !important;
+    gap: 2rem; 
+    overflow-x: auto;
+    scroll-snap-type: x mandatory; 
+    padding-bottom: 2rem; 
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-brand) transparent;
 }
 
-.slider-container::-webkit-scrollbar { display: none; }
+.slider-container::-webkit-scrollbar {
+    height: 6px;
+}
+
+.slider-container::-webkit-scrollbar-thumb {
+    background: var(--primary-brand);
+    border-radius: 10px;
+}
 
 .project-card {
     flex: 0 0 calc(33.333% - 1.33rem); scroll-snap-align: start; cursor: pointer;
