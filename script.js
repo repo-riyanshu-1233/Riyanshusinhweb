@@ -92,21 +92,47 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
+
+    createSecurityToastElement();
 });
+
+function createSecurityToastElement() {
+    if (!document.getElementById('security-toast')) {
+        const toast = document.createElement('div');
+        toast.id = 'security-toast';
+        toast.textContent = 'Website is protected';
+        document.body.appendChild(toast);
+    }
+}
+
+function showSecurityToast() {
+    const toast = document.getElementById('security-toast');
+    if (toast) {
+        toast.classList.add('show');
+        clearTimeout(toast.hideTimeout);
+        toast.hideTimeout = setTimeout(() => {
+            toast.classList.remove('show');
+        }, 1500);
+    }
+}
 
 document.addEventListener('contextmenu', function(e) {
     e.preventDefault();
+    showSecurityToast();
 });
 
 document.addEventListener('keydown', function(e) {
     if (e.ctrlKey && e.key === 'c') {
         e.preventDefault();
+        showSecurityToast();
     }
     if (e.ctrlKey && (e.key === 'u' || e.key === 's')) {
         e.preventDefault();
+        showSecurityToast();
     }
     if (e.key === 'F12') {
         e.preventDefault();
+        showSecurityToast();
     }
 });
 
