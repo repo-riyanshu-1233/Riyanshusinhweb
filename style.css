@@ -23,6 +23,12 @@
     user-select: none;
 }
 
+img {
+    pointer-events: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
 @media (min-width: 969px) {
     html, body, a, button, .project-card, .skill-item {
         cursor: none !important;
