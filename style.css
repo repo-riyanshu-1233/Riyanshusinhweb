@@ -317,3 +317,28 @@ button { outline: none; border: none; }
     background-color: var(--surface-color);
     margin-top: 4rem;
 }
+
+#security-toast {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    background: rgba(10, 10, 16, 0.95);
+    border: 1px solid var(--primary-brand);
+    color: var(--accent-color);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    z-index: 99999;
+    box-shadow: 0 0 25px var(--primary-glow);
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#security-toast.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
