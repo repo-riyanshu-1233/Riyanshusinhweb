@@ -161,12 +161,12 @@ button { outline: none; border: none; }
 .about-text-box p { font-size: 1.15rem; color: var(--accent-muted); line-height: 1.8; font-weight: 300; }
 
 .slider-container {
-    display: flex !important; 
+    display: flex !important;
     flex-wrap: nowrap !important;
-    gap: 2rem; 
+    gap: 2rem;
     overflow-x: auto;
-    scroll-snap-type: x mandatory; 
-    padding-bottom: 2rem; 
+    scroll-snap-type: x mandatory;
+    padding-bottom: 2rem;
     scrollbar-width: thin;
     scrollbar-color: var(--primary-brand) transparent;
 }
@@ -181,13 +181,19 @@ button { outline: none; border: none; }
 }
 
 .project-card {
-    flex: 0 0 calc(33.333% - 1.33rem); scroll-snap-align: start; cursor: pointer;
+    flex: 0 0 calc(33.333% - 1.33rem); 
+    scroll-snap-align: start; 
+    cursor: pointer;
     background: var(--card-bg); border: 1px solid var(--border-color);
     border-radius: 24px; overflow: hidden; backdrop-filter: blur(16px);
     transition: var(--transition-smooth); display: flex; flex-direction: column;
 }
 
-@media (max-width: 968px) { .project-card { flex: 0 0 85%; } }
+@media (max-width: 968px) { 
+    .project-card { 
+        flex: 0 0 85% !important; 
+    } 
+}
 
 .project-card:hover { border-color: var(--primary-brand); transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
 .p-img-box { width: 100%; height: 220px; overflow: hidden; background: #000; position: relative; }
