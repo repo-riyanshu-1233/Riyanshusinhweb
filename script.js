@@ -151,10 +151,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    const emailButton = document.getElementById("copy-email");
+    const emailButton = document.querySelector('.contact-box a[href^="mailto:"]');
 
     if (emailButton) {
-        emailButton.addEventListener("click", async () => {
+        emailButton.addEventListener("click", async (event) => {
+            event.preventDefault();
+
             try {
                 await navigator.clipboard.writeText("riyanshusinh@gmail.com");
 
