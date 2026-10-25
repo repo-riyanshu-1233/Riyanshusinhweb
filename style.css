@@ -292,3 +292,69 @@ img { max-width: 100%; }
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }
+
+
+/* Skills icons only: scoped to What I Know; all other sections remain unchanged. */
+#knowledge .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(82px, 1fr));
+    gap: 0.9rem;
+    max-width: 820px;
+}
+
+#knowledge .skill-item {
+    width: 100%;
+    max-width: 140px;
+    min-height: 112px;
+    aspect-ratio: 1 / 1;
+    padding: 1rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    background: rgba(44, 18, 20, 0.42);
+    border-color: rgba(242, 226, 205, 0.15);
+}
+
+#knowledge .skill-info {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+#knowledge .skill-name-area {
+    width: 100%;
+    justify-content: center;
+    gap: 0;
+}
+
+#knowledge .skill-name-area i {
+    width: auto;
+    font-size: 2.8rem;
+    color: var(--primary-brand);
+}
+
+#knowledge .skill-name-area span,
+#knowledge .skill-percent,
+#knowledge .progress-bar-track {
+    display: none !important;
+}
+
+#knowledge .skill-item:hover {
+    border-color: var(--primary-brand);
+    background: rgba(82, 25, 31, 0.38);
+}
+
+@media (max-width: 600px) {
+    #knowledge .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(76px, 1fr));
+        gap: 0.7rem;
+    }
+
+    #knowledge .skill-item {
+        min-height: 88px;
+        padding: 0.75rem;
+    }
+
+    #knowledge .skill-name-area i {
+        font-size: 2.25rem;
+    }
+}
